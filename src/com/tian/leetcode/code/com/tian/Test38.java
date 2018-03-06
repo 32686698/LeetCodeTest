@@ -19,7 +19,7 @@ public class Test38 {
         for (int i = 2; i <= n ; i++) {
             String cre = "";
             char[] chars = re.toCharArray();
-            for (int j = 1; j <= chars.length;) {
+            for (int j = 1; j < chars.length;) {
                 if(chars[j-1]!=chars[j]){
                     if(chars[j-1]=='1'){
                         cre += "11";
