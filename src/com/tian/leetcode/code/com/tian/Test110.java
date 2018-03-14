@@ -3,6 +3,9 @@ package com.tian.leetcode.code.com.tian;
 
 import com.tian.leetcode.code.com.tian.util.TreeNode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * https://leetcode.com/problems/balanced-binary-tree/description/
  * [1,2,2,3,3,3,3,4,4,4,4,4,4,null,null,5,5]
@@ -27,24 +30,34 @@ public class Test110 {
 
     }
 
+    /**
+     * 我的实现
+     * @param root
+     * @return
+     */
     public boolean isBalanced(TreeNode root) {
-        int deep = 0;
-        int min =  min(root,deep);
-        deep = 0;
-        int max =  max(root,deep);
-        if(max - min > 1){
-            return false;
+        if(null==root){
+            return true;
+        }
+        List<TreeNode> list = new ArrayList<>();
+        bianli(root,list);
+
+        for(TreeNode tn : list){
+            TreeNode left = tn.left;
+            TreeNode right = tn.right;
+            int leftDeep = 0;
+            int rightDeep = 0;
+            if(left!=null){
+                leftDeep = max(left,0);
+            }
+            if(right!=null){
+                rightDeep = max(right,0);
+            }
+            if(Math.abs(leftDeep-rightDeep)>1){
+                return false;
+            }
         }
         return true;
-    }
-
-    public int min (TreeNode root,int deep){
-        if(root==null){
-            return deep;
-        }else{
-            deep++;
-            return Math.min(min(root.left,deep),min(root.right,deep));
-        }
     }
     public int max (TreeNode root,int deep){
         if(root==null){
@@ -53,5 +66,36 @@ public class Test110 {
             deep++;
             return Math.max(max(root.left,deep),max(root.right,deep));
         }
+    }
+    public void bianli(TreeNode root,List<TreeNode> list){
+        list.add(root);
+        if(root.left!=null){
+            bianli(root.left,list);
+        }if(root.right!=null){
+            bianli(root.right,list);
+        }
+    }
+
+
+
+
+    private boolean result = true;
+
+    /**
+     * 牛逼的实现
+     * @param root
+     * @return
+     */
+    public boolean isBalanced2(TreeNode root) {
+        maxDepth(root);
+        return result;
+    }
+
+    public int maxDepth(TreeNode root) {
+        if (root == null) return 0;
+        int l = maxDepth(root.left);
+        int r = maxDepth(root.right);
+        if (Math.abs(l - r) > 1) result = false;
+        return 1 + Math.max(l, r);
     }
 }
