@@ -57,4 +57,21 @@ public class Test104 {
             }
         }
     }
+
+
+    /**
+     * 牛逼的实现
+     * @param root
+     * @return
+     */
+    public int maxDepth2(TreeNode root) {
+
+        if (root == null) return 0;
+
+        int lHeight = maxDepth2(root.left);
+        int rHeight = maxDepth2(root.right);
+
+        return Math.max(lHeight, rHeight)+1;
+
+    }
 }
