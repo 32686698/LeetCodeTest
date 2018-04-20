@@ -66,8 +66,7 @@ public class Test155 {
         }
         return min;
     }
-
-    class ListNode {
+    private class ListNode {
         public int val;
         public ListNode next;
         public ListNode last;
