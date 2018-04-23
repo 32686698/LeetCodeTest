@@ -9,7 +9,6 @@ public class ListNode {
     public static ListNode getIns(int... xx){
         ListNode ln = new ListNode();
         ListNode cu = ln;
-        ListNode cuu = ln;
         int leng = xx.length;
         for(int i = 0 ; i < leng ; i ++){
             cu.val = xx[i];
