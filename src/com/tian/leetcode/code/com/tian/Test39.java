@@ -11,6 +11,7 @@ public class Test39 {
     }
 
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        //给数组排序
         for(int i = 0 ; i < candidates.length; i ++){
             for(int j = 0 ;j < candidates.length-i-1;j++){
                 if(candidates[j]>candidates[j+1]){
@@ -21,13 +22,9 @@ public class Test39 {
             }
         }
         List<List<Integer>> lists = new ArrayList<>();
+
         for(int i = 0 ; i <candidates.length; i ++){
-            if(candidates[i]>target)break;
-            List<Integer> list = new ArrayList<>();
-            int count = 0;
-//            while (count>)---------------
-            list.add(candidates[i]);
-            count += candidates[i];
+
         }
 
 
